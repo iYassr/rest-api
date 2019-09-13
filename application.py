@@ -6,6 +6,7 @@ import time
 app = Flask(__name__)
 
 
+fake_price = 100.1
 food_dict = {'B4:21:8A:F0:13:44':{'type':'orange','price':8}}
 lemon = 5
 orange = 8
@@ -26,7 +27,7 @@ def main():
         timestamp = time.time()
         htime = time.ctime(timestamp)
         sensor_id = request.form.get('id')
-        food_dict[mac]['price']. = food_dict[mac]['price'] - 2
+        food_dict[mac]['price'] = food_dict[mac]['price'] - 2
         price = food_dict[mac]['price'] 
         json_data = {'mac': mac, 'sensor_id': sensor_id,
                      'temp': temp, 'timestamp': int(timestamp), 'time': htime, 'price': price}
@@ -44,10 +45,9 @@ def submit(temp):
         file.close()
         return 'posted'
 
-fake_price = 100
-@app.route('/get_price>', methods=['GET'])
+@app.route('/get_price', methods=['GET'])
 def get_price():
-    return fake_price = fake_price - 0.1
+    return '423'
  
 
 if __name__ == '__main__':
