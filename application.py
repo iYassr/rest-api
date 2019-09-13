@@ -50,7 +50,7 @@ def submit(temp):
 
 @app.route('/get_price', methods=['GET'])
 def get_price():
-    return 10.45
+    return str(10.45)
 
 
 if __name__ == '__main__':
