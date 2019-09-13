@@ -3,15 +3,17 @@ from flask import Flask, render_template, url_for, request, jsonify, redirect, f
 from flask import make_response
 import pprint
 import time
+import random
 app = Flask(__name__)
 
 
 fake_price = 100.1
-food_dict = {'B4:21:8A:F0:13:44':{'type':'orange','price':8}}
+food_dict = {'B4:21:8A:F0:13:44': {'type': 'orange', 'price': 8}}
 lemon = 5
 orange = 8
 potato = 10
 avocado = 20
+
 
 @app.route('/', methods=['GET', 'POST'])
 def main():
@@ -28,7 +30,7 @@ def main():
         htime = time.ctime(timestamp)
         sensor_id = request.form.get('id')
         food_dict[mac]['price'] = food_dict[mac]['price'] - 2
-        price = food_dict[mac]['price'] 
+        price = food_dict[mac]['price']
         json_data = {'mac': mac, 'sensor_id': sensor_id,
                      'temp': temp, 'timestamp': int(timestamp), 'time': htime, 'price': price}
         file.write(str(json_data))
@@ -45,10 +47,11 @@ def submit(temp):
         file.close()
         return 'posted'
 
+
 @app.route('/get_price', methods=['GET'])
 def get_price():
-    return '423'
- 
+    return 10.45
+
 
 if __name__ == '__main__':
     app.run()
