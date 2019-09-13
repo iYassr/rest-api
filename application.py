@@ -8,7 +8,6 @@ app = Flask(__name__)
 
 
 fake_price = 100.1
-food_dict = {'B4:21:8A:F0:13:44': {'type': 'orange', 'price': 8}}
 lemon = 5
 orange = 8
 potato = 10
@@ -29,12 +28,19 @@ def main():
         timestamp = time.time()
         htime = time.ctime(timestamp)
         sensor_id = request.form.get('id')
-        food_dict[mac]['price'] = food_dict[mac]['price'] - 2
+        food_dict[mac]['price'] = food_dict[mac]['price'] 
         price = food_dict[mac]['price']
         json_data = {'mac': mac, 'sensor_id': sensor_id,
                      'temp': temp, 'timestamp': int(timestamp), 'time': htime, 'price': price}
         file.write(str(json_data))
         file.close()
+        # 
+        last_dict['mac'] = mac
+        last_dict['timestamp'] = timestamp
+        last_dict['htime'] = htime
+        last_dict['sensor_id'] = sensor_id
+        last_dict['temp'] = temp
+        last_dict['price'] = price
         return 'posted'
 
 
@@ -48,10 +54,21 @@ def submit(temp):
         return 'posted'
 
 
+@app.route('/get_last_update', methods=['GET'])
+def get_last_update():
+   food_dict[last_dict['mac']]['price'] = food_dict[last_dict['mac']]['price']  - (float(last_dict['temp']) * 0.10)
+   last_dict['price'] = food_dict[last_dict['mac']]['price'] 
+   return last_dict
+
+
 @app.route('/get_price', methods=['GET'])
 def get_price():
-    return 'fudge you'
+    return fake_price
 
 
 if __name__ == '__main__':
+    food_dict = {'B4:21:8A:F0:13:44': {'type': 'orange', 'price': 8}}
+    cprice = 0
+    last_dict = {}
+    fake_price = '100'
     app.run()
