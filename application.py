@@ -1,7 +1,6 @@
 #! python3 
 from flask import Flask, render_template, url_for, request, jsonify, redirect, flash
 from flask import make_response
-import requests
 import time
 app = Flask(__name__)
 
