@@ -7,7 +7,11 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def main():
     if request.method == 'GET':
-        return 'it works v1' 
+        file = open('data.txt','r', newline="\n")
+        all_data = file.read()
+        print(all_data)
+        file.close()
+        return all_data
     if request.method == 'POST':
 
         file = open('data.txt','a+', newline="\n")
