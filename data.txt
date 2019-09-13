@@ -1,0 +1,3 @@
+fsdafsadTemp: None, Timestamp: <class 'datetime.time'>Temp: 1000, Timestamp: <class 'datetime.time'>Temp: 1000, Timestamp: <class 'datetime.time'>Temp: 1000, Timestamp: <built-in function time>Temp: 1000, Timestamp: <built-in function time> 
+
+Temp: 1000, Timestamp: 1568374863.509793
