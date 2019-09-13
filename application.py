@@ -19,7 +19,7 @@ def main():
         mac = request.form.get('mac')
         timestamp = time.time()
         htime = time.ctime(timestamp)
-        sensor_id = request.form.get('sensor_id')
+        sensor_id = request.form.get('id')
         json_data = {"mac": mac, "sensor_id": sensor_id,
                      "temp": temp, "timestamp": int(timestamp), "time": htime}
         file.write(str(json_data))
