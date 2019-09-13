@@ -1,1 +1,2 @@
-temp: 99, timestamp: 1568384634.0462666
+
+{'temp': 99, 'timestamp': 1568388592}{'temp': 99, 'timestamp': 1568388622}{'mac': 'fsadfasdfasdf', 'sensor_id': 'example_sensor_id', 'temp': '1', 'timestamp': 1568394815, 'time': 'Fri Sep 13 20:13:35 2019'}{'mac': 'fsadfasdfasdf', 'sensor_id': 'example_sensor_id', 'temp': '1', 'timestamp': 1568394819, 'time': 'Fri Sep 13 20:13:39 2019'}{'mac': 'fsadfasdfasdf', 'sensor_id': 'example_sensor_id', 'temp': '1', 'timestamp': 1568394820, 'time': 'Fri Sep 13 20:13:40 2019'}{'mac': 'fsadfasdfasdf', 'sensor_id': 'example_sensor_id', 'temp': '1', 'timestamp': 1568394820, 'time': 'Fri Sep 13 20:13:40 2019'}{'mac': 'fsadfasdfasdf', 'sensor_id': 'example_sensor_id', 'temp': '1', 'timestamp': 1568394821, 'time': 'Fri Sep 13 20:13:41 2019'}
