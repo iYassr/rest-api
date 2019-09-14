@@ -6,7 +6,7 @@ import time
 import random
 app = Flask(__name__)
 
-
+food_dict = {} 
 fake_price = 100.1
 lemon = 5
 orange = 8
@@ -72,11 +72,10 @@ def get_price():
 
 
 def last_price():
-    return 'yasser price'
-#    food_dict[last_dict['mac']]['price'] = food_dict[last_dict['mac']]['price']  - (float(last_dict['temp']) * 0.0005)
-#    price_ = float( "%0.2f" % food_dict[last_dict['mac']]['price'])  
-
-#    return str(price_)
+    global food_dict
+    food_dict[last_dict['mac']]['price'] = food_dict[last_dict['mac']]['price']  - (float(last_dict['temp']) * 0.0005)
+    price_ = float( "%0.2f" % food_dict[last_dict['mac']]['price'])  
+    return str(price_)
 
 
 if __name__ == '__main__':
