@@ -28,7 +28,8 @@ def main():
         timestamp = time.time()
         htime = time.ctime(timestamp)
         sensor_id = request.form.get('id')
-        price = food_dict[mac]['price']
+        #price = food_dict[mac]['price']
+        price = 10
         json_data = {'mac': mac, 'sensor_id': sensor_id,
                      'temp': temp, 'timestamp': int(timestamp), 'time': htime, 'price': price}
         file.write(str(json_data))
@@ -55,21 +56,30 @@ def submit(temp):
 
 @app.route('/get_last_update', methods=['GET'])
 def get_last_update():
-   food_dict[last_dict['mac']]['price'] = food_dict[last_dict['mac']]['price']  - (float(last_dict['temp']) * 0.0005)
-   last_dict['price'] = float( "%0.2f" % food_dict[last_dict['mac']]['price'])  
+#   food_dict[last_dict['mac']]['price'] = food_dict[last_dict['mac']]['price']  - (float(last_dict['temp']) * 0.0005)
+#   last_dict['price'] = float( "%0.2f" % food_dict[last_dict['mac']]['price'])  
+#
+
+#
+
+   last_dict['price'] = last_price()
    return last_dict
 
 
 @app.route('/get_price', methods=['GET'])
 def get_price():
-    return fake_price
+    return last_price()
 
+
+def last_price():
+    food_dict[last_dict['mac']]['price'] = food_dict[last_dict['mac']]['price']  - (float(last_dict['temp']) * 0.0005)
+    price_ = float( "%0.2f" % food_dict[last_dict['mac']]['price'])  
+    return str(price_)
 
 
 if __name__ == '__main__':
     food_dict = {'B4:21:8A:F0:13:44': {'type': 'orange', 'price': 8}}
     cprice = 0
     last_dict = {}
-    fake_price = '100'
     
     app.run()
