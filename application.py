@@ -72,9 +72,11 @@ def get_price():
 
 
 def last_price():
-    food_dict[last_dict['mac']]['price'] = food_dict[last_dict['mac']]['price']  - (float(last_dict['temp']) * 0.0005)
-    price_ = float( "%0.2f" % food_dict[last_dict['mac']]['price'])  
-    return str(price_)
+    return 'yasser price'
+#    food_dict[last_dict['mac']]['price'] = food_dict[last_dict['mac']]['price']  - (float(last_dict['temp']) * 0.0005)
+#    price_ = float( "%0.2f" % food_dict[last_dict['mac']]['price'])  
+
+#    return str(price_)
 
 
 if __name__ == '__main__':
