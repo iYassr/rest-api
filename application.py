@@ -96,7 +96,8 @@ def get_price():
         price_file = open('price_file.txt', 'r')
         data = price_file.read()
         price_file.close()
-        return str(data)
+        last_data = float( "%0.2f" % float(data))
+        return str(last_data)
 
     return last_price()
 
