@@ -1,1 +1,1 @@
-{'mac': 'B4:21:8A:F0:13:44', 'sensor_id': None, 'temp': '20', 'timestamp': 1568449582, 'time': 'Sat Sep 14 11:26:22 2019', 'price': 24.099999999999987}
+{'mac': 'B4:21:8A:F0:13:44', 'sensor_id': None, 'temp': '20', 'timestamp': 1568451074, 'time': 'Sat Sep 14 11:51:14 2019', 'price': 24.9}
