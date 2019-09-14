@@ -5,12 +5,13 @@ import pprint
 import time
 import random
 food_dict = {}
+food_dict = {'B4:21:8A:F0:13:44': {'type': 'orange', 'price': 8}}
 last_dict = {}
+price  = 25
 app = Flask(__name__)
 
 food_dict = {}
-food_dict = {'B4:21:8A:F0:13:44': {'type': 'orange', 'price': 8}}
-last_dict = {}
+ast_dict = {}
 fake_price = 100.1
 lemon = 5
 orange = 8
@@ -24,8 +25,10 @@ def main():
         file = open('data.txt', 'r', newline="\n")
         all_data = file.read()
         file.close()
-        return pprint.pformat(all_data)
+        final_str = "[ {} ]".format(all_data)
+        return str(final_str)
     if request.method == 'POST':
+        small_file = open('small_file.txt', 'w')
         file = open('data.txt', 'a+', newline="\n")
         temp = request.form.get('temp')
         mac = request.form.get('mac')
@@ -33,9 +36,12 @@ def main():
         htime = time.ctime(timestamp)
         sensor_id = request.form.get('id')
         #price = food_dict[mac]['price']
-        price = 10
+        global price
+        price = price - (float(temp) * 0.005)
         json_data = {'mac': mac, 'sensor_id': sensor_id,
                      'temp': temp, 'timestamp': int(timestamp), 'time': htime, 'price': price}
+        small_file.write(str(json_data))
+        small_file.close()
         file.write(str(json_data))
         file.close()
         #
@@ -47,6 +53,16 @@ def main():
         last_dict['price'] = price
         return 'posted'
 
+
+
+@app.route('/get_request', methods=['GET', 'POST'])
+def get_request():
+    if request.method == 'GET':
+        small_file = open('small_file.txt', 'r').read()
+        return str(small_file)
+    return ''
+
+ 
 
 @app.route('/data/<int:temp>', methods=['GET'])
 def submit(temp):
@@ -78,8 +94,8 @@ def get_price():
 def last_price():
     global food_dict
     global last_dict
-    food_dict[last_dict['mac']]['price'] = food_dict[last_dict['mac']
-                                                     ]['price'] - (float(last_dict['temp']) * 0.0005)
+    #food_dict[last_dict['mac']]['price'] = food_dict[last_dict['mac']]['price'] - (float(last_dict['temp']) * 0.0005)
+
     price_ = float("%0.2f" % food_dict[last_dict['mac']]['price'])
     return str(price_)
 
