@@ -55,7 +55,7 @@ def submit(temp):
 
 @app.route('/get_last_update', methods=['GET'])
 def get_last_update():
-   food_dict[last_dict['mac']]['price'] = food_dict[last_dict['mac']]['price']  - (float(last_dict['temp']) * 0.001)
+   food_dict[last_dict['mac']]['price'] = food_dict[last_dict['mac']]['price']  - (float(last_dict['temp']) * 0.0005)
    last_dict['price'] = float( "%0.2f" % food_dict[last_dict['mac']]['price'])  
    return last_dict
 
