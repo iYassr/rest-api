@@ -84,6 +84,5 @@ def last_price():
 if __name__ == '__main__':
     food_dict = {'B4:21:8A:F0:13:44': {'type': 'orange', 'price': 8}}
     cprice = 0
-    last_dict = {}
 
     app.run()
