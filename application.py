@@ -4,6 +4,8 @@ from flask import make_response
 import pprint
 import time
 import random
+food_dict = {}
+last_dict = {}
 app = Flask(__name__)
 
 food_dict = {}
@@ -84,5 +86,4 @@ def last_price():
 if __name__ == '__main__':
     food_dict = {'B4:21:8A:F0:13:44': {'type': 'orange', 'price': 8}}
     cprice = 0
-
     app.run()
