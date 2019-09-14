@@ -9,6 +9,7 @@ last_dict = {}
 app = Flask(__name__)
 
 food_dict = {}
+food_dict = {'B4:21:8A:F0:13:44': {'type': 'orange', 'price': 8}}
 last_dict = {}
 fake_price = 100.1
 lemon = 5
